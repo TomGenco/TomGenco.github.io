@@ -4,14 +4,123 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tom Genco</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400&display=swap" rel="stylesheet">
   <style type="text/css">
     body {
+      margin: 32px;
+
+      background-color: #f0f0f0;
+      color: #303841;
+
+      transition: margin 200ms ease;
+    }
+
+    body.dark {
       background-color: #303841;
       color: white;
+    }
+
+    #container {
+      margin: auto;
+      padding: 30px;
+      border: 2px solid rgba(0, 0, 0, 0.75);
+      border-radius: 32px;
+      max-width: 900px;
+
+      background-color: rgba(255, 255, 255, 0.05);
+      box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.25),
+                  inset 3px 3px 6px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(4px);
+
+      transition: border-radius 200ms ease;
+    }
+
+    .dark #container {
+      border-color: rgba(255, 255, 255, 0.75);
+    }
+
+    h1 {
+      margin: 0 16px 0;
+
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 200;
+      font-size: 48pt;
+
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+    }
+
+    .dark h1 {
+      font-weight: 100;
+    }
+
+    h1 a {
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+    @media screen and (max-width: 700px) {
+      body {
+        margin: 16px;
+      }
+
+      #container {
+        padding: 15px;
+
+        border-width: 1px;
+        border-radius: 16px;
+      }
+
+      h1 {
+        margin: 0 8px 0;
+        font-weight: 300;
+        font-size: 36px;
+      }
+
+      .dark h1 {
+        font-weight: 200;
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body {
+        background-color: #303841;
+        color: white;
+      }
+
+      #container {
+        border-color: rgba(255, 255, 255, 0.75);
+      }
+    }
+
+    @media (max-width: 700px) and (prefers-color-scheme: dark) {
+      h1 {
+        font-weight: 100;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Tom Genco</h1>
+  <div id="container">
+    <h1><a href="/">Tom Genco</a></h1>
+  </div>
+  <script type="text/javascript">
+    function setDarkMode(bool) {
+      if (bool)
+        document.body.classList.add('dark');
+      else
+        document.body.classList.remove('dark');
+      return bool;
+    }
+
+    function getDarkMode() {
+      return document.body.classList.contains('dark');
+    }
+
+    function toggleDarkMode() {
+      return setDarkMode(!getDarkMode());
+    }
+  </script>
 </body>
 </html>
